@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM centos7:latest
 
 MAINTAINER Eugene de Beste, Scott Hazelhurst
 
