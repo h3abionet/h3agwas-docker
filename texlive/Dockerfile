@@ -22,4 +22,4 @@ RUN yum install -y texlive-base \
 RUN yum install -y \
     python34 python34-libs python34-pip
 RUN pip3 install --upgrade pip
-RUN pip3 install pandas matplotlib
+
