@@ -19,6 +19,6 @@ RUN yum install -y texlive-base \
     texlive-fancyhdr \
     texlive-ifluatex \
     which epel-release
-RUN yum install -y 
+RUN yum install -y \
     python34 python34-libs python34-pip
 RUN pip3 install pandas matplotlib
