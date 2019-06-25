@@ -6,7 +6,7 @@ ENV gemmaurl "https://github.com/genetics-statistics/GEMMA/releases/download/0.9
 RUN apk --no-cache --update-cache add gcc gfortran python3 python3-dev py3-pip build-base wget freetype-dev libpng-dev openblas-dev
 RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
 RUN pip3 install numpy scipy pandas matplotlib openpyxl
-RUN wget http://s3.amazonaws.com/plink1-assets/$plinksrc && unzip $plinksrc -d /usr/local/bin/ &&
+RUN wget http://s3.amazonaws.com/plink1-assets/$plinksrc && unzip $plinksrc -d /usr/local/bin/ && \
     rm $plinksrc /usr/local/bin/toy.ped /usr/local/bin/toy.map /usr/local/bin/LICENSE && \
     chmod a+x /usr/local/bin/plink
 RUN wget $gemmaurl && gunzip gemma-${gemmaver}-linux-static.gz && \
