@@ -1,0 +1,13 @@
+FROM alpine:3.7
+ENV plinksrc "plink_linux_x86_64_20190617.zip"
+ENV bolturl "https://data.broadinstitute.org/alkesgroup/BOLT-LMM/downloads/BOLT-LMM_v2.3.2.tar.gz"
+RUN apk --no-cache --update-cache add gcc gfortran python3 python-dev py-pip build-base wget freetype-dev libpng-dev openblas-dev bash
+RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
+RUN pip install fastlmm && \
+    chmod a+x /usr/lib/python2.7/site-packages/fastlmm/association/Fastlmm_autoselect/fastlmmc && \
+    ln -s /usr/lib/python2.7/site-packages/fastlmm/association/Fastlmm_autoselect/fastlmmc /usr/local/bin/
+RUN wget http://s3.amazonaws.com/plink1-assets/$plinksrc && unzip $plinksrc -d /usr/local/bin/ && \
+    rm $plinksrc /usr/local/bin/toy.ped /usr/local/bin/toy.map /usr/local/bin/LICENSE && \
+    chmod a+x /usr/local/bin/plink
+RUN wget $bolturl && tar zxvf BOLT-LMM_v2.3.2.tar.gz && \
+    mv bolt tables /usr/local/bin/ && chmod a+x /usr/local/bin/bolt
