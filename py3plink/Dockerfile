@@ -12,4 +12,4 @@ RUN wget http://s3.amazonaws.com/plink1-assets/$plinksrc && unzip $plinksrc -d /
     chmod a+x /usr/local/bin/plink
 RUN wget $gemmaurl && gunzip gemma-${gemmaver}-linux-static.gz && \
     mv gemma-${gemmaver}-linux-static /usr/local/bin/gemma && chmod +x /usr/local/bin/gemma
-ENV PYTHONPATH 
+ENV PYTHONPATH ""
