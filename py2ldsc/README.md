@@ -1,5 +1,6 @@
 # LDSC for H3ABioNet
 
+[![Docker Repository on Quay](https://quay.io/repository/h3abionet_org/py2ldsc/status "Docker Repository on Quay")](https://quay.io/repository/h3abionet_org/py2ldsc)
 
 This is a Docker image for [LDSC](https://github.com/bulik/ldsc),
 LD Score Regression (LDSC).
