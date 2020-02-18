@@ -7,6 +7,7 @@ ENV PYTHONNOUSERSITE 1
 RUN apk --no-cache --update-cache add gcc gfortran python3 python3-dev py3-pip build-base wget freetype-dev libpng-dev openblas-dev bash
 RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
 RUN pip3 install numpy scipy pandas matplotlib openpyxl biopython Distance
+RUN pip3 install awscli
 RUN wget http://s3.amazonaws.com/plink1-assets/$plinksrc && unzip $plinksrc -d /usr/local/bin/ && \
     rm $plinksrc /usr/local/bin/toy.ped /usr/local/bin/toy.map /usr/local/bin/LICENSE && \
     chmod a+x /usr/local/bin/plink
