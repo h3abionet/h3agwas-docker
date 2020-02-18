@@ -21,7 +21,7 @@ RUN yum install -y texlive-base \
     which epel-release
 RUN yum install -y \
     python34 python34-libs python34-pip
-RUN pip3 install --upgrade pip
+RUN pip3 install --upgrade pip awscli
 ENV PYTHONNOUSERSITE 1 
 ENV PYTHONPATH 
 
