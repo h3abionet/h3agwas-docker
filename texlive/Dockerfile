@@ -1,6 +1,6 @@
 FROM centos:centos7
 
-MAINTAINER Eugene de Beste, Scott Hazelhurst
+LABEL maintainer="Scott.Hazelhurst@wits.ac.za"
 
 # Install the packages needed to work with latex
 
@@ -18,10 +18,10 @@ RUN yum install -y texlive-base \
     texlive-pdftex-def \ 
     texlive-fancyhdr \
     texlive-ifluatex \
-    which epel-release
+    which epel-release \
 RUN yum install -y \
-    python34 python34-libs python34-pip
-RUN pip3.4 install --upgrade pip awscli
+    python36 python36-libs python36-pip
+RUN python3 -m pip  install --upgrade awscli
 ENV PYTHONNOUSERSITE 1 
 ENV PYTHONPATH  ""
 
