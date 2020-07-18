@@ -22,6 +22,6 @@ RUN yum install -y texlive-base \
 RUN yum install -y \
     python36 python36-libs python36-pip
 RUN python3 -m pip  install --upgrade awscli
-ENV PYTHONNOUSERSITE 1 
-ENV PYTHONPATH  ""
+
+
 
