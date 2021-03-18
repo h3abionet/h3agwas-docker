@@ -10,3 +10,4 @@ RUN wget https://cnsgenomics.com/software/gcta/bin/gcta_1.93.2beta.zip && \
     unzip gcta_1.93.2beta.zip && \
     mv gcta_1.93.2beta/* /usr/local/bin/ && \
     rm -rf gcta_1.93.2beta*
+RUN pip3.6 install panda argparse numpy
