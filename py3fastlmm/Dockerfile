@@ -22,3 +22,8 @@ chmod a+x /usr/local/bin/plink
 RUN wget $bolturl && tar zxvf BOLT-LMM_v2.3.2.tar.gz && \
          mv BOLT-LMM_v2.3.2/bolt BOLT-LMM_v2.3.2/tables /usr/local/bin/ && chmod a+x /usr/local/bin/bolt
 RUN chmod a+x /usr/local/lib64/python3.6/site-packages/fastlmm/association/Fastlmm_autoselect/fastlmmc && ln -s /usr/local/lib64/python3.6/site-packages/fastlmm/association/Fastlmm_autoselect/fastlmmc /usr/local/bin/fastlmmc
+RUN wget https://cnsgenomics.com/software/gcta/bin/gcta_1.93.2beta.zip && \
+    unzip gcta_1.93.2beta.zip && \
+    mv gcta_1.93.2beta/* /usr/local/bin/ && \
+    rm -rf gcta_1.93.2beta*
+
