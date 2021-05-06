@@ -1,6 +1,9 @@
-FROM ubuntu:20.04
+FROM ubuntu:18.04
 #ENV plinksrc "plink_linux_x86_64_20190617.zip"
 #ENV bolturl "https://data.broadinstitute.org/alkesgroup/BOLT-LMM/downloads/BOLT-LMM_v2.3.2.tar.gz"
+RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
+    && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+    ENV LANG en_US.utf8
 ENV bolturl "https://storage.googleapis.com/broad-alkesgroup-public/BOLT-LMM/downloads/"
 ENV bolversion "BOLT-LMM_v2.3.5"
 ENV PYTHONNOUSERSITE 1 
