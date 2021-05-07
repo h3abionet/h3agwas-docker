@@ -10,7 +10,7 @@ RUN pip3 install numpy scipy pandas matplotlib openpyxl biopython Distance
 RUN pip3 install awscli
 RUN apt-get install -y curl 
 RUN wget https://github.com/genetics-statistics/GEMMA/releases/download/v0.98.4/gemma-0.98.4-linux-static-AMD64.gz && gunzip gemma-0.98.4-linux-static-AMD64.gz && \
-  mv gemma-0.98.4-linux-static-AMD64 /usr/local/bin/gemma
+  mv gemma-0.98.4-linux-static-AMD64 /usr/local/bin/gemma && chmod +x /usr/local/bin/gemma
 
 
 #RUN WGET HTTP://S3.AMAZONAWS.COM/PLINK1-ASSETS/$PLINKSRC && UNZIP $PLINKSRC -D /USR/LOCAL/BIN/ && \
