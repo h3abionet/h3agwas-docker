@@ -1,16 +1,22 @@
-
-FROM alpine:3.7
-ENV plinksrc "plink_linux_x86_64_20190617.zip"
+FROM ubuntu:18.04
+#ENV plinksrc "plink_linux_x86_64_20190617.zip"
 ENV gemmaver "0.98.4"
 ENV gemmaurl "https://github.com/genetics-statistics/GEMMA/releases/download/v0.98.4/gemma-0.98.4-linux-static-AMD64.gz"
 ENV PYTHONNOUSERSITE 1  
-RUN apk --no-cache --update-cache add gcc gfortran python3 python3-dev py3-pip build-base wget freetype-dev libpng-dev openblas-dev bash
-RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
+#RUN apk --no-cache --update-cache add gcc gfortran python3 python3-dev py3-pip build-base wget freetype-dev libpng-dev openblas-dev bash
+RUN apt-get -y update && apt-get -y install build-essential python3-dev python3 python3-pip gfortran wget libpng-dev libopenblas-dev plink
+#RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
 RUN pip3 install numpy scipy pandas matplotlib openpyxl biopython Distance
 RUN pip3 install awscli
-RUN wget http://s3.amazonaws.com/plink1-assets/$plinksrc && unzip $plinksrc -d /usr/local/bin/ && \
-    rm $plinksrc /usr/local/bin/toy.ped /usr/local/bin/toy.map /usr/local/bin/LICENSE && \
-    chmod a+x /usr/local/bin/plink
-RUN wget $gemmaurl && gunzip gemma-$gemmaver-linux-static-AMD64.gz && \
-    mv gemma-$gemmaver-linux-static-AMD64 /usr/local/bin/gemma && chmod +x /usr/local/bin/gemma
-ENV PYTHONPATH ""
+RUN apt-get install -y curl 
+RUN wget https://github.com/genetics-statistics/GEMMA/releases/download/v0.98.4/gemma-0.98.4-linux-static-AMD64.gz && gunzip gemma-0.98.4-linux-static-AMD64.gz && \
+  mv gemma-0.98.4-linux-static-AMD64 /usr/local/bin/gemma
+
+
+#RUN WGET HTTP://S3.AMAZONAWS.COM/PLINK1-ASSETS/$PLINKSRC && UNZIP $PLINKSRC -D /USR/LOCAL/BIN/ && \
+
+#    RM $PLINKSRC /USR/LOCAL/BIN/TOY.PED /USR/LOCAL/BIN/TOY.MAP /USR/LOCAL/BIN/LICENSE && \
+#    CHMOD A+X /USR/LOCAL/BIN/PLINK
+#RUN WGET $GEMMAURL && GUNZIP GEMMA-$GEMMAVER-LINUX-STATIC-AMD64.GZ && \
+#    MV GEMMA-$GEMMAVER-LINUX-STATIC-AMD64 /USR/LOCAL/BIN/GEMMA && CHMOD +X /USR/LOCAL/BIN/GEMMA
+#ENV PYTHONPATH ""
