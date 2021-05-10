@@ -8,6 +8,7 @@ RUN pip3 install awscli
 RUN apt-get install -y curl 
 RUN wget https://github.com/genetics-statistics/GEMMA/releases/download/v0.98.4/gemma-0.98.4-linux-static-AMD64.gz && gunzip gemma-0.98.4-linux-static-AMD64.gz && \
   mv gemma-0.98.4-linux-static-AMD64 /usr/local/bin/gemma && chmod +x /usr/local/bin/gemma
+ENV PATH="/usr/lib/plink/:${PATH}"
 
 RUN plink -h
 RUN gemma -h

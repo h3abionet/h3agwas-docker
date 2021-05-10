@@ -8,9 +8,9 @@ ENV bolturl "https://storage.googleapis.com/broad-alkesgroup-public/BOLT-LMM/dow
 ENV bolversion "BOLT-LMM_v2.3.5"
 ENV PYTHONNOUSERSITE 1 
 #RUN yum install --assumeyes epel-release && yum update --assumeyes --skip-broken &&  yum install --assumeyes wget gcc python3-devel wget freetype-devel libpng-devel openblas-devel bash python3-pip  sympy  atlas-devel gcc-c++ unzip cmake3 libzstd-devel zlib zlib-devel scl-utils centos-release-scl-rh git make awscli
-RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
 
 RUN  apt-get update && apt-get install -y software-properties-common
+RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
 RUN add-apt-repository ppa:deadsnakes/ppa
 
 RUN apt-get update && apt-get install -y plink wget gcc  wget  libpng-dev libopenblas-dev bash     libatlas-base-dev  unzip cmake libzstd-dev zlib1g zlib1g-dev  git make awscli build-essential  python3.6 python3.6-dev 
@@ -41,7 +41,7 @@ RUN chmod a+x /usr/local/bin/fastlmmc
 ##https://storage.googleapis.com/broad-alkesgroup-public/BOLT-LMM/downloads/BOLT-LMM_v2.3.5.tar.gz
 RUN wget $bolturl""$bolversion".tar.gz" && tar zxvf   $bolversion".tar.gz" && \
          mv $bolversion/bolt $bolversion/tables /usr/local/bin/ && chmod a+x /usr/local/bin/bolt
-RUN wget https://cnsgenomics.com/software/gcta/bin/gcta_1.93.2beta.zip && \
+RUN wget https://raw.githubusercontent.com/h3abionet/h3agwas/master/utils/bin/gcta_1.93.2beta.zip && \
     unzip gcta_1.93.2beta.zip && \
     mv gcta_1.93.2beta/* /usr/local/bin/ && \
     rm -rf gcta_1.93.2beta*
@@ -49,4 +49,12 @@ RUN wget https://cnsgenomics.com/software/gcta/bin/gcta_1.93.2beta.zip && \
 RUN wget https://github.com/genetics-statistics/GEMMA/releases/download/v0.98.4/gemma-0.98.4-linux-static-AMD64.gz && gunzip gemma-0.98.4-linux-static-AMD64.gz && \
   mv gemma-0.98.4-linux-static-AMD64 /usr/local/bin/gemma && chmod +x /usr/local/bin/gemma
 
+
+ENV PATH="/usr/lib/plink/:${PATH}"
+
+RUN plink -h
+RUN gemma -h
+#RUN gcta64 -h 
+#RUN fastlmmc -h
+RUN gemma -h
 

@@ -6,11 +6,15 @@ ENV PYTHONNOUSERSITE 1
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Moscow
 RUN apt update && apt-get install -y tzdata
-RUN apt update &&  apt install -y wget gcc g++ unzip make zlib1g-dev vim default-jre python3-pip python3-pandas  #zlib-dev
+RUN apt update &&  apt install -y wget gcc g++ unzip make zlib1g-dev vim default-jre python3-pip python3-pandas  plink #zlib-dev
 
 
-RUN wget https://cnsgenomics.com/software/gcta/bin/gcta_1.93.2beta.zip && \
+RUN wget https://raw.githubusercontent.com/h3abionet/h3agwas/master/utils/bin/gcta_1.93.2beta.zip && \
     unzip gcta_1.93.2beta.zip && \
     mv gcta_1.93.2beta/* /usr/local/bin/ && \
     rm -rf gcta_1.93.2beta*
 RUN pip3 install argparse numpy
+ENV PATH="/usr/lib/plink/:${PATH}"
+
+#RUN gcta64 -h
+RUN plink -h
