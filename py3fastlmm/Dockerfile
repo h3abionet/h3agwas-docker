@@ -13,7 +13,7 @@ RUN  apt-get update && apt-get install -y software-properties-common
 RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
 RUN add-apt-repository ppa:deadsnakes/ppa
 
-RUN apt-get update && apt-get install -y plink wget gcc  wget  libpng-dev libopenblas-dev bash     libatlas-base-dev  unzip cmake libzstd-dev zlib1g zlib1g-dev  git make awscli build-essential  python3.6 python3.6-dev 
+RUN apt-get update && apt-get install -y plink1.9 wget gcc  wget  libpng-dev libopenblas-dev bash     libatlas-base-dev  unzip cmake libzstd-dev zlib1g zlib1g-dev  git make awscli build-essential  python3.6 python3.6-dev 
 RUN apt-get install -y apt-utils
 RUN apt-get update && apt-get install -y python3-pip
 
@@ -50,10 +50,10 @@ RUN wget https://github.com/genetics-statistics/GEMMA/releases/download/v0.98.4/
   mv gemma-0.98.4-linux-static-AMD64 /usr/local/bin/gemma && chmod +x /usr/local/bin/gemma
 
 
-ENV PATH="/usr/lib/plink/:${PATH}"
+#ENV PATH="/usr/lib/plink/:${PATH}"
+ENV ln -s /usr/bin/plink1.9   /usr/bin/plink
 
-RUN plink -h
-RUN gemma -h
+#RUN plink -h
 #RUN gcta64 -h 
 #RUN fastlmmc -h
 RUN gemma -h

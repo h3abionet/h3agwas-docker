@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 ENV PYTHONNOUSERSITE 1 
-RUN apt update &&  apt install -y wget build-essential unzip make zlib1g-dev vim default-jre python2.7 python-pip  plink #zlib-dev
+RUN apt update &&  apt install -y wget build-essential unzip make zlib1g-dev vim default-jre python2.7 python-pip  plink1.9 #zlib-dev
 
 ENV bolturl "https://storage.googleapis.com/broad-alkesgroup-public/BOLT-LMM/downloads/"
 ENV bolversion "BOLT-LMM_v2.3.5"
@@ -38,7 +38,8 @@ RUN wget https://github.com/genetics-statistics/GEMMA/releases/download/v0.98.4/
   mv gemma-0.98.4-linux-static-AMD64 /usr/local/bin/gemma && chmod +x /usr/local/bin/gemma
 
 
-ENV PATH="/usr/lib/plink/:${PATH}"
-RUN plink -h
+#ENV PATH="/usr/lib/plink/:${PATH}"
+RUN ln -s /usr/bin/plink1.9   /usr/bin/plink
+#RUN plink -h
 #RUN gcta64 -h
 

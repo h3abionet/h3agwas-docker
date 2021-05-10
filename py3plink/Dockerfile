@@ -1,16 +1,17 @@
 FROM ubuntu:18.04
 ENV PYTHONNOUSERSITE 1  
 #RUN apk --no-cache --update-cache add gcc gfortran python3 python3-dev py3-pip build-base wget freetype-dev libpng-dev openblas-dev bash
-RUN apt-get -y update && apt-get -y install build-essential python3-dev python3 python3-pip gfortran wget libpng-dev libopenblas-dev plink
+RUN apt-get -y update && apt-get -y install build-essential python3-dev python3 python3-pip gfortran wget libpng-dev libopenblas-dev plink1.9
 #RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
 RUN pip3 install numpy scipy pandas matplotlib openpyxl biopython Distance
 RUN pip3 install awscli
 RUN apt-get install -y curl 
 RUN wget https://github.com/genetics-statistics/GEMMA/releases/download/v0.98.4/gemma-0.98.4-linux-static-AMD64.gz && gunzip gemma-0.98.4-linux-static-AMD64.gz && \
   mv gemma-0.98.4-linux-static-AMD64 /usr/local/bin/gemma && chmod +x /usr/local/bin/gemma
-ENV PATH="/usr/lib/plink/:${PATH}"
+######ENV PATH="/usr/lib/plink/:${PATH}"
+RUN ln -s /usr/bin/plink1.9   /usr/bin/plink
 
-RUN plink -h
+#RUN plink -h
 RUN gemma -h
 
 
