@@ -8,8 +8,11 @@ ENV bolturl "https://storage.googleapis.com/broad-alkesgroup-public/BOLT-LMM/dow
 ENV bolversion "BOLT-LMM_v2.3.5"
 ENV PYTHONNOUSERSITE 1 
 #RUN yum install --assumeyes epel-release && yum update --assumeyes --skip-broken &&  yum install --assumeyes wget gcc python3-devel wget freetype-devel libpng-devel openblas-devel bash python3-pip  sympy  atlas-devel gcc-c++ unzip cmake3 libzstd-devel zlib zlib-devel scl-utils centos-release-scl-rh git make awscli
+RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
+
 RUN  apt-get update && apt-get install -y software-properties-common
 RUN add-apt-repository ppa:deadsnakes/ppa
+
 RUN apt-get update && apt-get install -y plink wget gcc  wget  libpng-dev libopenblas-dev bash     libatlas-base-dev  unzip cmake libzstd-dev zlib1g zlib1g-dev  git make awscli build-essential  python3.6 python3.6-dev 
 RUN apt-get install -y apt-utils
 RUN apt-get update && apt-get install -y python3-pip
