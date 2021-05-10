@@ -18,5 +18,5 @@ cd usr/local/src/gwama/ && make  && mv GWAMA $bindir/ && rm /$gwamasrc
 RUN mkdir /usr/local/src/METAL && cd /usr/local/src/METAL && wget http://csg.sph.umich.edu/abecasis/metal/download/$metalsrc && tar -xzf $metalsrc  && cd generic-metal/ && make all && cp executables/metal $bindir/
 ## MR-MEGA installation
 RUN mkdir /usr/local/src/MRMEGA/ && cd /usr/local/src/MRMEGA/ && wget http://www.geenivaramu.ee/tools/$mrmegasrc && unzip $mrmegasrc && make &&cp MR-MEGA $bindir/
-RUN cd $bindir/ && wget https://github.com/h3abionet/h3agwas/blob/master/utils/bin/Metasoft.zip && unzip  Metasoft.zip  
+RUN cd $bindir/ && wget https://raw.githubusercontent.com/h3abionet/h3agwas/master/utils/bin/Metasoft.zip && unzip  Metasoft.zip  
 RUN pip3 install numpy scipy matplotlib pandas scikit-learn==0.19.1 sympy nose 
