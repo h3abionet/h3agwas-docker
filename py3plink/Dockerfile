@@ -11,6 +11,10 @@ RUN wget https://github.com/genetics-statistics/GEMMA/releases/download/v0.98.4/
 ######ENV PATH="/usr/lib/plink/:${PATH}"
 RUN ln -s /usr/bin/plink1.9   /usr/bin/plink
 
+RUN wget https://raw.githubusercontent.com/h3abionet/h3agwas/master/utils/bin/fastlmmc
+RUN mv fastlmmc /usr/local/bin/
+RUN chmod a+x /usr/local/bin/fastlmmc
+
 #RUN plink -h
 RUN gemma -h
 
