@@ -20,6 +20,7 @@ RUN mkdir /usr/local/src/METAL && cd /usr/local/src/METAL && wget http://csg.sph
 ## MR-MEGA installation
 RUN mkdir /usr/local/src/MRMEGA/ && cd /usr/local/src/MRMEGA/ && wget http://www.geenivaramu.ee/tools/$mrmegasrc && unzip $mrmegasrc && make &&cp MR-MEGA $bindir/
 RUN cd $bindir/ && wget https://raw.githubusercontent.com/h3abionet/h3agwas/master/utils/bin/Metasoft.zip && unzip  Metasoft.zip  
+RUN pip3 install --upgrade pip
 RUN pip3 install numpy scipy matplotlib pandas scikit-learn==0.19.1 sympy nose 
 ENV ln -s /usr/bin/plink1.9   /usr/bin/plink
 
