@@ -1,4 +1,5 @@
-FROM ubuntu:18.04
+FROM quay.io/cybozu/ubuntu:20.04
+
 ENV PYTHONNOUSERSITE 1 
 
 

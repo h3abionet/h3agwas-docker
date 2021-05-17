@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM quay.io/cybozu/ubuntu:20.04
 
 MAINTAINER Eugene de Beste
 RUN groupadd -r plink && useradd -r -g plink plink

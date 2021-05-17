@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM quay.io/cybozu/ubuntu:20.04
 
 # ENV bolturl "https://data.broadinstitute.org/alkesgroup/BOLT-LMM/downloads/BOLT-LMM_v2.3.2.tar.gz"
 ENV PYTHONNOUSERSITE 1 

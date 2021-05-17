@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM quay.io/cybozu/ubuntu:20.04
 ## adapted from https://github.com/weizhouUMICH/Docker/blob/master/SAIGE/Dockerfile
 
 LABEL maintainer="wzhou@broadinstitute.org"

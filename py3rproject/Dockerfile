@@ -1,6 +1,8 @@
-FROM ubuntu:18.04
+FROM quay.io/cybozu/ubuntu:20.04
 
-MAINTAINER Eugene de Beste
+ENV PYTHONNOUSERSITE 1
+
+MAINTAINER JTB 
 
 RUN apt update -qq
 # install two helper packages we need
