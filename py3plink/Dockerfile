@@ -1,4 +1,4 @@
-FROM quay.io/cybozu/ubuntu:20:04
+FROM quay.io/cybozu/ubuntu:20.04
 ENV PYTHONNOUSERSITE 1  
 #RUN apk --no-cache --update-cache add gcc gfortran python3 python3-dev py3-pip build-base wget freetype-dev libpng-dev openblas-dev bash
 RUN apt-get -y update && apt-get -y install build-essential python3-dev python3 python3-pip gfortran wget libpng-dev libopenblas-dev plink1.9
