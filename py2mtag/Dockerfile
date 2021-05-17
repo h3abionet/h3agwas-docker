@@ -6,7 +6,7 @@ ENV PYTHONNOUSERSITE 1
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Moscow
 RUN apt update && apt-get install -y tzdata
-RUN apt-get install software-properties-common apt-add-repository universe
+RUN apt-get install -y software-properties-common apt-add-repository universe
 RUN apt update &&  apt install -y wget gcc g++ unzip make zlib1g-dev vim default-jre python2.7 python-pip  python-pandas #zlib-dev
 
 RUN pip install scipy==0.18 

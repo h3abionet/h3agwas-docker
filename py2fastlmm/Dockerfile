@@ -5,7 +5,7 @@ ENV PYTHONNOUSERSITE 1
 
 RUN apt-get update 
 RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
-RUN apt-get install software-properties-common && apt-add-repository universe
+RUN apt-get install -y software-properties-common apt-add-repository universe
 RUN apt-get update &&  apt install -y wget build-essential unzip make zlib1g-dev vim default-jre python2.7 python-pip  plink1.9 #zlib-dev
 
 ENV bolturl "https://storage.googleapis.com/broad-alkesgroup-public/BOLT-LMM/downloads/"
