@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* 
     ENV LANG en_US.utf8
 ENV bolturl "https://storage.googleapis.com/broad-alkesgroup-public/BOLT-LMM/downloads/"
 ENV bolversion "BOLT-LMM_v2.3.5"
-ENV PYTHONNOUSERSITE 1 
+#ENV PYTHONNOUSERSITE 1 
 #RUN yum install --assumeyes epel-release && yum update --assumeyes --skip-broken &&  yum install --assumeyes wget gcc python3-devel wget freetype-devel libpng-devel openblas-devel bash python3-pip  sympy  atlas-devel gcc-c++ unzip cmake3 libzstd-devel zlib zlib-devel scl-utils centos-release-scl-rh git make awscli
 
 RUN  apt-get update && apt-get install -y software-properties-common
