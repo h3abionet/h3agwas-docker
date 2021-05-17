@@ -18,4 +18,4 @@ RUN pip3 install argparse numpy
 RUN ln -s /usr/bin/plink1.9   /usr/bin/plink
 
 #RUN gcta64 -h
-RUN plink -h
+#RUN plink -h
