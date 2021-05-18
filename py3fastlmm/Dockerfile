@@ -39,7 +39,7 @@ RUN wget https://github.com/genetics-statistics/GEMMA/releases/download/v0.98.4/
   mv gemma-0.98.4-linux-static-AMD64 /usr/local/bin/gemma && chmod +x /usr/local/bin/gemma
 
 
-#ENV ln -s /usr/bin/plink1.9   /usr/bin/plink
+ENV ln -s /usr/bin/plink1.9   /usr/bin/plink
 #
 ##RUN plink -h
 ##RUN gcta64 -h 
