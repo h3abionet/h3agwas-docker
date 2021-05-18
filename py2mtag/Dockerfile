@@ -24,5 +24,6 @@ RUN pip install joblib argparse
 #RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
 #RUN
 RUN git clone https://github.com/omeed-maghzian/mtag.git && cd mtag && mv * /usr/local/bin/
-ENV ln -s /usr/bin/plink1.9   /usr/bin/plink
+RUN ln -s /usr/bin/plink1.9   /usr/bin/plink
+
 
