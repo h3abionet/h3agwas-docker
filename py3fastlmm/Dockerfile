@@ -26,7 +26,7 @@ RUN mv fastlmmc /usr/local/bin/
 RUN chmod a+x /usr/local/bin/fastlmmc
 
 RUN wget $bolturl""$bolversion".tar.gz" && tar zxvf   $bolversion".tar.gz" && \
-         mv $bolversion/bolt $bolversion/tables /usr/local/bin/ && chmod a+x /usr/local/bin/bolt
+         mv $bolversion/bolt $bolversion/tables $boltversion/lib /usr/local/bin/ && chmod a+x /usr/local/bin/bolt
 RUN wget https://raw.githubusercontent.com/h3abionet/h3agwas/master/utils/bin/gcta_1.93.2beta.zip && \
     unzip gcta_1.93.2beta.zip && \
     mv gcta_1.93.2beta/* /usr/local/bin/ && \

@@ -43,6 +43,9 @@ RUN wget https://raw.githubusercontent.com/h3abionet/h3agwas/master/utils/bin/gc
     mv gcta_1.93.2beta/* /usr/local/bin/ && \
     rm -rf gcta_1.93.2beta*
 #
+RUN wget $bolturl""$bolversion".tar.gz" && tar zxvf   $bolversion".tar.gz" && \
+         mv $bolversion/bolt $bolversion/tables $boltversion/lib /usr/local/bin/ && chmod a+x /usr/local/bin/bolt
+
 RUN wget https://github.com/genetics-statistics/GEMMA/releases/download/v0.98.4/gemma-0.98.4-linux-static-AMD64.gz && gunzip gemma-0.98.4-linux-static-AMD64.gz && \
   mv gemma-0.98.4-linux-static-AMD64 /usr/local/bin/gemma && chmod +x /usr/local/bin/gemma
 #
