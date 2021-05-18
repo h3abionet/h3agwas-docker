@@ -23,10 +23,13 @@ RUN pip3 install sympy setuptools numpy scipy psutil wheel  matplotlib pandas sc
 #
 RUN wget https://raw.githubusercontent.com/h3abionet/h3agwas/master/utils/bin/fastlmmc
 RUN mv fastlmmc /usr/local/bin/
-RUN chmod a+x /usr/local/bin/fastlmmc
-
+#RUN chmod a+x /usr/local/bin/fastlmmc
+#
 RUN wget $bolturl""$bolversion".tar.gz" && tar zxvf   $bolversion".tar.gz" && \
-         mv $bolversion/bolt $bolversion/tables $boltversion/lib /usr/local/bin/ && chmod a+x /usr/local/bin/bolt
+         mv $bolversion/bolt $bolversion/tables  /usr/local/bin/ 
+RUN mkdir /usr/local/bin/lib/ && mv $bolversion/lib/* /usr/local/bin/lib/
+
+RUN chmod a+x /usr/local/bin/bolt
 RUN wget https://raw.githubusercontent.com/h3abionet/h3agwas/master/utils/bin/gcta_1.93.2beta.zip && \
     unzip gcta_1.93.2beta.zip && \
     mv gcta_1.93.2beta/* /usr/local/bin/ && \
@@ -36,10 +39,10 @@ RUN wget https://github.com/genetics-statistics/GEMMA/releases/download/v0.98.4/
   mv gemma-0.98.4-linux-static-AMD64 /usr/local/bin/gemma && chmod +x /usr/local/bin/gemma
 
 
-ENV ln -s /usr/bin/plink1.9   /usr/bin/plink
-
-#RUN plink -h
-#RUN gcta64 -h 
-#RUN fastlmmc -h
-RUN gemma -h
-
+#ENV ln -s /usr/bin/plink1.9   /usr/bin/plink
+#
+##RUN plink -h
+##RUN gcta64 -h 
+##RUN fastlmmc -h
+#RUN gemma -h
+#
