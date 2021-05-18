@@ -33,6 +33,8 @@ RUN pip install sympy
 RUN wget https://raw.githubusercontent.com/h3abionet/h3agwas/master/utils/bin/fastlmmc
 RUN mv fastlmmc /usr/local/bin/
 RUN chmod a+x /usr/local/bin/fastlmmc
+ENV ln -s /usr/bin/plink1.9   /usr/bin/plink
+
 #
 #
 RUN wget https://raw.githubusercontent.com/h3abionet/h3agwas/master/utils/bin/gcta_1.93.2beta.zip && \
