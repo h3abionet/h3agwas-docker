@@ -43,19 +43,11 @@ RUN wget https://raw.githubusercontent.com/h3abionet/h3agwas/master/utils/bin/gc
     rm -rf gcta_1.93.2beta*
 #
 RUN wget $bolturl""$bolversion".tar.gz" && tar zxvf   $bolversion".tar.gz" && \
-         mv $bolversion/bolt $bolversion/tables $boltversion/lib /usr/local/bin/ && chmod a+x /usr/local/bin/bolt
+         mv $bolversion/bolt $bolversion/tables  /usr/local/bin/
+RUN chmod a+x /usr/local/bin/bolt
+
+RUN mkdir /usr/local/bin/lib/ && mv $bolversion/lib/* /usr/local/bin/lib/
 
 RUN wget https://github.com/genetics-statistics/GEMMA/releases/download/v0.98.4/gemma-0.98.4-linux-static-AMD64.gz && gunzip gemma-0.98.4-linux-static-AMD64.gz && \
   mv gemma-0.98.4-linux-static-AMD64 /usr/local/bin/gemma && chmod +x /usr/local/bin/gemma
 
-RUN wget $bolturl""$bolversion".tar.gz" && tar zxvf   $bolversion".tar.gz" && \
-         mv $bolversion/bolt $bolversion/tables  /usr/local/bin/
-RUN mkdir /usr/local/bin/lib/ && mv $bolversion/lib/* /usr/local/bin/lib/
-
-#
-#
-##ENV PATH="/usr/lib/plink/:${PATH}"
-RUN ln -s /usr/bin/plink1.9   /usr/bin/plink
-##RUN plink -h
-##RUN gcta64 -h
-#
