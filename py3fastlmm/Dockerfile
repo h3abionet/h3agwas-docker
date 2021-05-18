@@ -23,7 +23,7 @@ RUN pip3 install sympy setuptools numpy scipy psutil wheel  matplotlib pandas sc
 #
 RUN wget https://raw.githubusercontent.com/h3abionet/h3agwas/master/utils/bin/fastlmmc
 RUN mv fastlmmc /usr/local/bin/
-#RUN chmod a+x /usr/local/bin/fastlmmc
+RUN chmod a+x /usr/local/bin/fastlmmc
 #
 RUN wget $bolturl""$bolversion".tar.gz" && tar zxvf   $bolversion".tar.gz" && \
          mv $bolversion/bolt $bolversion/tables  /usr/local/bin/ 
