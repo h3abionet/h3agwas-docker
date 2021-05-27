@@ -4,10 +4,10 @@ ENV PYTHONNOUSERSITE 1
 
 MAINTAINER JTB 
 
-RUN apt update -qq
+RUN apt-get update -qq
 # install two helper packages we need
-RUN apt install -y dirmngr apt-transport-https ca-certificates software-properties-common gnupg2
-RUN apt-get install -y apt-transport-https ca-certificates python3-pip python3-dev wget
+RUN apt install -y dirmngr apt-transport-https ca-certificates software-properties-common gnupg2  
+RUN apt-get update && apt-get install -y apt-transport-https ca-certificates python3-pip python3-dev
 # import the signing key (by Michael Rutter) for these repo
 #RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
 # add the R 3.6 repo from CRAN -- adjust 'focal' to 'groovy' or 'bionic' as needed
