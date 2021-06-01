@@ -1,4 +1,4 @@
-FROM centos:centos7
+FROM quay.io/centos/centos:7
 
 LABEL maintainer="Scott.Hazelhurst@wits.ac.za"
 
