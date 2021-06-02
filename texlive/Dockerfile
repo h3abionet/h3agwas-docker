@@ -6,6 +6,7 @@ LABEL maintainer="Scott.Hazelhurst@wits.ac.za"
 
 RUN yum install -y texlive-base \ 
     texlive-tex \ 
+    texlive-pdfpages \
     texlive-pdftex \ 
     texlive-geometry \ 
     texlive-datetime \ 
