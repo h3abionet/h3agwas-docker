@@ -23,7 +23,8 @@ RUN apt-get install -y libcurl4-openssl-dev
 RUN apt-get install -y libssl-dev libxml2-dev
 RUN R -e "install.packages('car', dependencies=TRUE, repos='https://cloud.r-project.org')"
 RUN R -e "install.packages(c('optparse','data.table', 'ggplot2', 'ggpubr', 'ff', 'readxl', 'base64'),repos='https://cloud.r-project.org')" 
-RUN R -e "install.packages('BiocManager', repos='https://cloud.r-project.org');BiocManager::install('crlmm')"
+RUN R -e "install.packages('BiocManager', repos='https://cloud.r-project.org')"
+RUN R -e "BiocManager::install('crlmm')"
 
 RUN apt-get install -y plink1.9
 RUN ln -s /usr/bin/plink1.9   /usr/bin/plink
