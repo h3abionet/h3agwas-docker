@@ -27,7 +27,7 @@ RUN R -e "install.packages(c('BiocManager', repos='https://cloud.r-project.org')
 RUN R -e "install.packages(c('bitops', 'RCurl', 'GenomeInfoDbData', 'matrixStats', 'GenomeInfoDb', 'XVector', 'MatrixGenerics'), repos='https://cloud.r-project.org')"
 RUN R -e "install.packages(c('DelayedArray', 'bit64', 'blob', 'memoise', 'plogr', 'IRanges', 'GenomicRanges', 'SummarizedExperiment'), repos='https://cloud.r-project.org')"
 RUN R -e "install.packages(c('Biostrings', 'S4Vectors', 'RSQLite', 'zlibbioc'), repos= 'https://cloud.r-project.org')"
-RUN R -e "install.packages(c('iterators', 'oligoClasses', 'preprocessCore', 'Biobase', 'BiocGenerics', 'affyio', 'illuminaio', repos= 'https://cloud.r-project.org')"
+RUN R -e "install.packages(c('iterators', 'oligoClasses', 'preprocessCore', 'Biobase', 'BiocGenerics', 'affyio', 'illuminaio'), repos= 'https://cloud.r-project.org')"
 RUN R -e "install.packages(c('ellipse', 'mvtnorm', 'foreach', 'VGAM', 'limma', 'beanplot'), repos='https://cloud.r-project.org')"
 
 RUN R -e "BiocManager::install('crlmm')"
