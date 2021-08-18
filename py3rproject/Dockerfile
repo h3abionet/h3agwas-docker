@@ -23,7 +23,11 @@ RUN apt-get install -y libcurl4-openssl-dev
 RUN apt-get install -y libssl-dev libxml2-dev
 RUN R -e "install.packages('car', dependencies=TRUE, repos='https://cloud.r-project.org')"
 RUN R -e "install.packages(c('optparse','data.table', 'ggplot2', 'ggpubr', 'ff', 'readxl', 'base64'),repos='https://cloud.r-project.org')" 
-RUN R -e "install.packages('BiocManager', repos='https://cloud.r-project.org')"
+RUN R -e "install.packages(c('BiocManager', repos='https://cloud.r-project.org'), repos='https://cloud.r-project.org')"
+RUN R -e "install.packages(c('bitops', 'RCurl', 'GenomeInfoDbData', 'matrixStats', 'GenomeInfoDb', 'XVector', 'MatrixGenerics'), repos='https://cloud.r-project.org')"
+RUN R -e "install.packages(c('DelayedArray', 'bit64', 'blob', 'memoise', 'plogr', 'IRanges', 'GenomicRanges', 'SummarizedExperiment'), repos='https://cloud.r-project.org')"
+RUN R -e "install.packages(c('Biostrings', 'S4Vectors', 'RSQLite', 'zlibbioc', 'iterators', 'oligoClasses', 'preprocessCore', 'Biobase', 'BiocGenerics', 'affyio', 'illuminaio', 'ellipse', 'mvtnorm', 'foreach', 'VGAM', 'limma', 'beanplot'), repos='https://cloud.r-project.org')"
+
 RUN R -e "BiocManager::install('crlmm')"
 
 RUN apt-get install -y plink1.9
