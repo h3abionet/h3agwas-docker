@@ -59,13 +59,14 @@ RUN ln -s /usr/bin/python2.7 /usr/bin/python
 RUN curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
 RUN python get-pip.py
 
+RUN R -e "install.packages(c('qlcMatrix'))"
 RUN R CMD INSTALL SAIGE 
-#RUN    cp SAIGE/extdata/createSparseGRM.R /usr/local/bin/createSparseGRM.R && \
-#    chmod +x /usr/local/bin/createSparseGRM.R && \
-#    cp SAIGE/extdata/step1_fitNULLGLMM.R /usr/local/bin/step1_fitNULLGLMM.R && \
-#    chmod +x /usr/local/bin/step1_fitNULLGLMM.R && \
-#    cp SAIGE/extdata/step2_SPAtests.R /usr/local/bin/step2_SPAtests.R && \
-#    chmod +x /usr/local/bin/step2_SPAtests.R && \
+RUN    cp SAIGE/extdata/createSparseGRM.R /usr/local/bin/createSparseGRM.R && \
+    chmod +x /usr/local/bin/createSparseGRM.R && \
+    cp SAIGE/extdata/step1_fitNULLGLMM.R /usr/local/bin/step1_fitNULLGLMM.R && \
+    chmod +x /usr/local/bin/step1_fitNULLGLMM.R && \
+    cp SAIGE/extdata/step2_SPAtests.R /usr/local/bin/step2_SPAtests.R && \
+    chmod +x /usr/local/bin/step2_SPAtests.R 
 #    rm -rf SAIGE
 #
 ## Display SAIGE help
