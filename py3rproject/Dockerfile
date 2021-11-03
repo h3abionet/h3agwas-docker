@@ -13,7 +13,9 @@ ENV  R_VERSION 4.0.5
 RUN curl -O https://cran.rstudio.com/src/base/R-4/R-${R_VERSION}.tar.gz && tar -xzvf R-${R_VERSION}.tar.gz 
 
 RUN apt-get install -y libx11-dev xserver-xorg-dev libxt-dev
-RUN apt-get install build-essential fort77 xorg-dev liblzma-dev libblas-dev gfortran gcc-multilib gobjc++ aptitude libreadline-dev libbz2-dev libpcre2-dev libcurl4 libcurl4-openssl-dev default-jre default-jdk openjdk-8-jdk openjdk-8-jre libssl-dev libxml2-dev -y 
+RUN apt-get install build-essential fort77 xorg-dev liblzma-dev libblas-dev gfortran gcc-multilib  -y
+RUN apt-get install gobjc++ aptitude libreadline-dev libbz2-dev libpcre2-dev libcurl4 libcurl4-openssl-dev -y
+RUN apt-get install default-jre default-jdk openjdk-8-jdk openjdk-8-jre libssl-dev libxml2-dev -y 
 
 
 
