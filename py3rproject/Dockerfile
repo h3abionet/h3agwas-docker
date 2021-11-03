@@ -8,20 +8,26 @@ RUN apt-get update -qq
 # install two helper packages we need
 RUN apt install -y dirmngr apt-transport-https ca-certificates software-properties-common gnupg2  
 RUN apt-get update && apt-get install -y apt-transport-https ca-certificates python3-pip python3-dev wget
-RUN apt-key adv --keyserver keyserver.ubuntu.com::80 --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-# import the signing key (by Michael Rutter) for these repo
-# add the R 3.6 repo from CRAN -- adjust 'focal' to 'groovy' or 'bionic' as needed
 
-RUN add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -sc)-cran40/"
-RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
-RUN apt-get update -y && \
-    apt-get install r-base-core -y && \
-    apt-get install r-cran-kernsmooth -y
+ENV  R_VERSION 4.0.5
+RUN curl -O https://cran.rstudio.com/src/base/R-4/R-${R_VERSION}.tar.gz && tar -xzvf R-${R_VERSION}.tar.gz 
 
-RUN apt-get install -y libcurl4-openssl-dev
-RUN apt-get install -y libssl-dev libxml2-dev
+RUN apt-get install -y libx11-dev xserver-xorg-dev libxt-dev
+RUN apt-get install build-essential fort77 xorg-dev liblzma-dev libblas-dev gfortran gcc-multilib gobjc++ aptitude libreadline-dev libbz2-dev libpcre2-dev libcurl4 libcurl4-openssl-dev default-jre default-jdk openjdk-8-jdk openjdk-8-jre libssl-dev libxml2-dev -y 
+
+
+
+RUN cd R-${R_VERSION} && ./configure     --prefix=/opt/R/${R_VERSION} --enable-memory-profiling --enable-R-shlib  --with-blas   --with-lapack --with-x=no
+RUN cd /R-${R_VERSION} && make && make install
+ENV PATH="/opt/R/${R_VERSION}/bin:${PATH}"
+#RUN rm /R-${R_VERSION}
+
+#RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
+
 RUN R -e "install.packages('car', dependencies=TRUE, repos='https://cloud.r-project.org')"
 RUN R -e "install.packages(c('optparse','data.table', 'ggplot2', 'ggpubr', 'ff', 'readxl', 'base64', 'parallel'),repos='https://cloud.r-project.org')" 
+RUN R -e "install.packages('svglite',repos='https://cloud.r-project.org')"
+
 #RUN R -e "install.packages(c('BiocManager', repos='https://cloud.r-project.org'), repos='https://cloud.r-project.org')"
 #RUN R -e "install.packages(c('bitops', 'RCurl', 'GenomeInfoDbData', 'matrixStats', 'GenomeInfoDb', 'XVector', 'MatrixGenerics'), repos='https://cloud.r-project.org')"
 #RUN R -e "install.packages(c('DelayedArray', 'bit64', 'blob', 'memoise', 'plogr', 'IRanges', 'GenomicRanges', 'SummarizedExperiment'), repos='https://cloud.r-project.org')"
@@ -34,7 +40,6 @@ RUN R -e "install.packages(c('optparse','data.table', 'ggplot2', 'ggpubr', 'ff',
 RUN apt-get install -y plink1.9
 RUN ln -s /usr/bin/plink1.9   /usr/bin/plink
 RUN apt-get install -y libfontconfig1-dev
-RUN R -e "install.packages('svglite')"
 
 
 #crlmm => bioconductor
