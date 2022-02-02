@@ -8,6 +8,7 @@ ENV mrmegasrc "MR-MEGA_v0.1.5.zip"
 ENV PATH=$bindir:$PATH
 RUN mkdir -p $bindir
 RUN apt update &&  apt install -y wget gcc g++ unzip make zlib1g-dev vim default-jre python3 python3-pip plink1.9 #zlib-dev 
+RUN pip3 install awscli
 ## GWAMMA installation 
 RUN mkdir /usr/local/src/gwama && wget http://www.geenivaramu.ee/tools/$gwamasrc && unzip $gwamasrc -d /usr/local/src/gwama/ && \
 cd usr/local/src/gwama/ && make  && mv GWAMA $bindir/ && rm /$gwamasrc 

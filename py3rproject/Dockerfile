@@ -17,6 +17,7 @@ RUN apt-get install build-essential fort77 xorg-dev liblzma-dev libblas-dev gfor
 RUN apt-get install gobjc++ aptitude libreadline-dev libbz2-dev libpcre2-dev libcurl4 libcurl4-openssl-dev -y
 RUN apt-get install default-jre default-jdk openjdk-8-jdk openjdk-8-jre libssl-dev libxml2-dev -y 
 
+RUN pip3 install awscli
 
 
 RUN cd R-${R_VERSION} && ./configure     --prefix=/opt/R/${R_VERSION} --enable-memory-profiling --enable-R-shlib  --with-blas   --with-lapack --with-x=no
