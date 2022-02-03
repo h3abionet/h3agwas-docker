@@ -34,4 +34,7 @@ RUN ln -s /usr/bin/plink1.9   /usr/bin/plink
 RUN apt-get install -y libfontconfig1-dev
 RUN ln -s /usr/bin/python2.7 /usr/bin/python
 
+RUN curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
+RUN python get-pip.py
+
 RUN pip install awscli

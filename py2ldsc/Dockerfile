@@ -17,6 +17,9 @@ RUN pip install --upgrade pip
 
 RUN pip install scipy==0.18 
 RUN pip install numpy==1.16 
+RUN apt-get install libbz2-dev -y
+RUN apt-get install liblzma-dev -y
+
 RUN pip install pybedtools
 RUN pip install nose==1.3
 RUN pip install pandas==0.20
