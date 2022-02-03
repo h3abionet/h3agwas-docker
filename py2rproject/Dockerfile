@@ -20,7 +20,6 @@ RUN apt-get update -y && \
     apt-get install r-base-core -y && \
     apt-get install r-cran-kernsmooth -y
 
-RUN pip3 install awscli
 #RUN apt-get install -y libcurl4-openssl-dev
 #RUN apt-get install -y libssl-dev libxml2-dev
 #RUN R -e "install.packages('car', dependencies=TRUE, repos='https://cloud.r-project.org')"
@@ -35,3 +34,4 @@ RUN ln -s /usr/bin/plink1.9   /usr/bin/plink
 RUN apt-get install -y libfontconfig1-dev
 RUN ln -s /usr/bin/python2.7 /usr/bin/python
 
+RUN pip install awscli
