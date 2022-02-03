@@ -51,6 +51,8 @@ RUN apt-get install -y r-base
 RUN apt-get install -y git r-base
 RUN git clone https://github.com/weizhouUMICH/SAIGE
 
+RUN pip3 install awscli
+
 
 # Install SAIGE and R dependencies
 RUN Rscript SAIGE/extdata/install_packages.R 

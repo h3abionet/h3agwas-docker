@@ -8,6 +8,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Moscow
 RUN apt update && apt-get install -y tzdata
 RUN apt update &&  apt install -y wget gcc g++ unzip make zlib1g-dev vim default-jre python3-pip python3-pandas  plink1.9 #zlib-dev
+RUN pip3 install awscli
 
 
 RUN wget https://raw.githubusercontent.com/h3abionet/h3agwas/master/utils/bin/gcta_1.93.2beta.zip && \

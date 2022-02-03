@@ -21,6 +21,7 @@ RUN pip install nose
 RUN pip install pandas
 RUN pip install bitarray
 RUN pip install joblib argparse
+RUN pip3 install awscli
 #RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
 #RUN
 RUN git clone https://github.com/omeed-maghzian/mtag.git && cd mtag && mv * /usr/local/bin/

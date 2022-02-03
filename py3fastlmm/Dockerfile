@@ -19,6 +19,7 @@ ENV PYTHONPATH "/usr/lib64/python3.6/site-packages/:/usr/local/lib64/python3.6/s
 RUN pip3 install --upgrade setuptools
 
 RUN pip3 install sympy setuptools numpy scipy psutil wheel  matplotlib pandas scikit-learn sympy nose  numpy scipy psutil wheel 
+RUN pip3 install awscli
 #RUN python3 -m pip install fastlmm
 #
 RUN wget https://raw.githubusercontent.com/h3abionet/h3agwas/master/utils/bin/fastlmmc

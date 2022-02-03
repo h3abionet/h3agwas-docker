@@ -9,7 +9,7 @@ RUN apt-get install -y software-properties-common && apt-add-repository universe
 RUN apt-get update &&  apt install -y wget build-essential unzip make zlib1g-dev vim default-jre python2.7  plink1.9 #zlib-dev curl 
 
 ENV bolturl "https://storage.googleapis.com/broad-alkesgroup-public/BOLT-LMM/downloads/"
-ENV bolversion "BOLT-LMM_v2.3.5"
+ENV bolversion "BOLT-LMM_v2.3.6"
 
 RUN ln -s /usr/bin/python2.7 /usr/bin/python
 RUN apt-get install -y python2.7 python2-minimal #python-pandas
@@ -29,6 +29,7 @@ RUN pip install scikit-learn
 RUN pip install nose 
 RUN pip install panda
 RUN pip install sympy
+RUN pip3 install awscli
 #
 RUN wget https://raw.githubusercontent.com/h3abionet/h3agwas/master/utils/bin/fastlmmc
 RUN mv fastlmmc /usr/local/bin/
