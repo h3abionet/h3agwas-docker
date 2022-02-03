@@ -23,7 +23,7 @@ RUN pip3 install awscli
 RUN cd R-${R_VERSION} && ./configure     --prefix=/opt/R/${R_VERSION} --enable-memory-profiling --enable-R-shlib  --with-blas   --with-lapack --with-x=no
 RUN cd /R-${R_VERSION} && make && make install
 ENV PATH="/opt/R/${R_VERSION}/bin:${PATH}"
-RUN rm /R-${R_VERSION}
+RUN rm -rf /R-${R_VERSION}
 RUN rm -rf /R-${R_VERSION}.tar.gz
 
 #RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
