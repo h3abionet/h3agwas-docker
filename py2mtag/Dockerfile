@@ -16,6 +16,9 @@ RUN pip install --upgrade pip
 
 RUN pip install scipy
 RUN pip install numpy
+RUN apt-get install libbz2-dev -y
+RUN apt-get install liblzma-dev -y
+
 RUN pip install pybedtools
 RUN pip install nose
 RUN pip install pandas
