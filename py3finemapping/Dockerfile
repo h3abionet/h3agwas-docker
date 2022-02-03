@@ -3,8 +3,11 @@ FROM quay.io/cybozu/ubuntu:20.04
 RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
     && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
     ENV LANG en_US.utf8
+
+
 ENV bolturl "https://storage.googleapis.com/broad-alkesgroup-public/BOLT-LMM/downloads/"
-ENV bolversion "BOLT-LMM_v2.3.5"
+ENV bolversion "BOLT-LMM_v2.3.6"
+
 
 RUN  apt-get update && apt-get install -y software-properties-common
 RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
