@@ -29,7 +29,7 @@ RUN pip install scikit-learn
 RUN pip install nose 
 RUN pip install panda
 RUN pip install sympy
-RUN pip3 install awscli
+RUN pip install awscli
 #
 RUN wget https://raw.githubusercontent.com/h3abionet/h3agwas/master/utils/bin/fastlmmc
 RUN mv fastlmmc /usr/local/bin/

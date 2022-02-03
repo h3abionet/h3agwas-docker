@@ -21,7 +21,7 @@ RUN pip install pybedtools
 RUN pip install nose==1.3
 RUN pip install pandas==0.20
 RUN pip install bitarray
-RUN pip3 install awscli
+RUN pip install awscli
 #RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
 #RUN
 RUN git clone https://github.com/bulik/ldsc.git && cd ldsc && mv * /usr/local/bin/
