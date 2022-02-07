@@ -31,6 +31,7 @@ RUN rm -rf /R-${R_VERSION}.tar.gz
 RUN R -e "install.packages('car', dependencies=TRUE, repos='https://cloud.r-project.org')"
 RUN R -e "install.packages(c('optparse','data.table', 'ggplot2', 'ggpubr', 'ff', 'readxl', 'base64', 'parallel'),repos='https://cloud.r-project.org')" 
 RUN R -e "install.packages('svglite',repos='https://cloud.r-project.org')"
+RUN R -e "install.packages(c("gridExtra"),repos='https://cloud.r-project.org')"
 
 #RUN R -e "install.packages(c('BiocManager', repos='https://cloud.r-project.org'), repos='https://cloud.r-project.org')"
 #RUN R -e "install.packages(c('bitops', 'RCurl', 'GenomeInfoDbData', 'matrixStats', 'GenomeInfoDb', 'XVector', 'MatrixGenerics'), repos='https://cloud.r-project.org')"
