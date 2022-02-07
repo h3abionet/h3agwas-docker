@@ -45,7 +45,7 @@ RUN R -e "install.packages('gridExtra', repos='http://R-Forge.R-project.org')"
 RUN apt-get install -y plink1.9
 RUN ln -s /usr/bin/plink1.9   /usr/bin/plink
 RUN apt-get install -y libfontconfig1-dev
-RUN R -e "install.packages('ggpubr', repos='http://R-Forge.R-project.org')"
+RUN R -e "if(!require(devtools)) install.packages("devtools");devtools::install_github("kassambara/ggpubr")"
 
 
 #crlmm => bioconductor
