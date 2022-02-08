@@ -26,4 +26,4 @@ RUN gemma -h
 #RUN WGET $GEMMAURL && GUNZIP GEMMA-$GEMMAVER-LINUX-STATIC-AMD64.GZ && \
 #    MV GEMMA-$GEMMAVER-LINUX-STATIC-AMD64 /USR/LOCAL/BIN/GEMMA && CHMOD +X /USR/LOCAL/BIN/GEMMA
 #ENV PYTHONPATH ""
-RUN pt-get -y update && apt-get -y install unzip
+RUN apt-get -y update && apt-get -y install unzip
