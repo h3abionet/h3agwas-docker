@@ -50,6 +50,7 @@ RUN apt-get install  libgl1-mesa-dev -y
 RUN R -e "install.packages(\"devtools\", repos='cran.r-project.org/')"
 RUN apt-get install  cmake -y
 RUN R -e "devtools::install_github('kassambara/ggpubr')"
+RUN R -e "install.packages(\"qqman\", repos='cran.r-project.org/')"
 
 
 #crlmm => bioconductor
