@@ -52,5 +52,7 @@ RUN apt-get install  cmake -y
 RUN R -e "devtools::install_github('kassambara/ggpubr')"
 RUN R -e "install.packages(\"qqman\", repos='cran.r-project.org/')"
 
+RUN pip3 install numpy scipy pandas matplotlib openpyxl biopython Distance 
+
 
 #crlmm => bioconductor
