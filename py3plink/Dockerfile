@@ -8,6 +8,7 @@ RUN pip3 install awscli
 RUN apt-get install -y curl 
 RUN wget https://github.com/genetics-statistics/GEMMA/releases/download/v0.98.4/gemma-0.98.4-linux-static-AMD64.gz && gunzip gemma-0.98.4-linux-static-AMD64.gz && \
   mv gemma-0.98.4-linux-static-AMD64 /usr/local/bin/gemma && chmod +x /usr/local/bin/gemma
+RUN wget https://biogems.info/download/gemma-0.98.6-pre1.gz && gunzip gemma-0.98.6-pre1.gz &&  mv gemma-0.98.6-pre1 /usr/local/bin/gemma-0.98.6 && chmod +x /usr/local/bin/gemma-0.98.6
 ######ENV PATH="/usr/lib/plink/:${PATH}"
 RUN ln -s /usr/bin/plink1.9   /usr/bin/plink
 
@@ -17,6 +18,8 @@ RUN chmod a+x /usr/local/bin/fastlmmc
 
 #RUN plink -h
 RUN gemma -h
+RUN gemma-0.98.6 -h
+
 
 
 #RUN WGET HTTP://S3.AMAZONAWS.COM/PLINK1-ASSETS/$PLINKSRC && UNZIP $PLINKSRC -D /USR/LOCAL/BIN/ && \
