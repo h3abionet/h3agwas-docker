@@ -12,7 +12,7 @@ RUN apt-get install -y zlib1g libboost-all-dev sqlite3
 #RUN cd qctool && python3 ./waf configure 
 #RUN cd qctool && python3 ./waf
 RUN wget -c https://www.well.ox.ac.uk/~gav/resources/qctool_v2.0.6-Ubuntu16.04-x86_64.tgz && tar -xzf qctool_v2.0.6-Ubuntu16.04-x86_64.tgz
-RUN mv qctool_v2.0.6-Ubuntu16.04-x86_64/qctool  /usr/bin/
+RUN mv qctool_v2.0.6-Ubuntu16.04-x86_64/qctool  /usr/bin/ && chmod +x /usr/bin/qctool
 RUN apt-get -y update && apt-get -y install python2.7 python2-minimal
 RUN ln -s /usr/bin/python2.7 /usr/bin/python
 RUN curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
