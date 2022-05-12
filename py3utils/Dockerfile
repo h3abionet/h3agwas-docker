@@ -29,10 +29,8 @@ RUN pip install panda
 RUN pip install sympy
 
 
-RUN wget -c  https://github.com/DReichLab/EIG/archive/v7.2.1.tar.gz
 RUN apt-get install libgsl-dev libblas-dev liblapack-dev liblapacke-dev -y 
-RUN tar -xzf v7.2.1.tar.gz
-RUN cd /EIG-7.2.1/src/ && make LDLIBS="-llapacke" &&  make install LDLIBS="-llapacke" && mv ../bin/* /usr/bin/ 
+RUN  git clone https://github.com/DReichLab/EIG/ && cd /EIG//src make LDLIBS="-llapacke" &&  make install LDLIBS="-llapacke" && mv ../bin/* /usr/bin/  &&  cd / && rm -rf EIG
 
 
 
