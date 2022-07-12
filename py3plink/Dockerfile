@@ -30,3 +30,5 @@ RUN gemma-0.98.6 -h
 #    MV GEMMA-$GEMMAVER-LINUX-STATIC-AMD64 /USR/LOCAL/BIN/GEMMA && CHMOD +X /USR/LOCAL/BIN/GEMMA
 #ENV PYTHONPATH ""
 RUN apt-get -y update && apt-get -y install unzip
+#RUN wget http://code.enkre.net/bgen/tarball/release/bgen.tgz & tar -& cd bgen & ./waf configure & ./waf
+RUN wget https://github.com/rgcgithub/regenie/releases/download/v3.1.3/regenie_v3.1.3.gz_x86_64_Linux.zip && unzip regenie_v3.1.3.gz_x86_64_Linux.zip && mv regenie_v3.1.3.gz_x86_64_Linux regenie 

@@ -35,6 +35,7 @@ RUN apt-get update && \
     # Install Python dependencies
 RUN python3 -m pip install pip --upgrade && \
     python3 -m pip install cget 
+RUN pip3 install awscli
     # Install R
 RUN apt-get install -y r-base 
 #RUN    curl -O https://cloud.r-project.org/src/base/R-3/R-3.5.1.tar.gz && \
@@ -49,9 +50,8 @@ RUN apt-get install -y r-base
 
 #COPY . SAIGE
 RUN apt-get install -y git r-base
-RUN git clone https://github.com/weizhouUMICH/SAIGE
+RUN git clone https://github.com/saigegit/SAIGE
 
-RUN pip3 install awscli
 
 
 # Install SAIGE and R dependencies
