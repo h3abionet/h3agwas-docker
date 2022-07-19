@@ -1,4 +1,4 @@
-FROM quay.io/cybozu/ubuntu:20.04
+FROM ubuntu:21.10
 
 ENV PYTHONNOUSERSITE 1
 
@@ -14,18 +14,18 @@ RUN apt-get install -y libx11-dev xserver-xorg-dev libxt-dev
 
 
 RUN apt-get install xauth -y
-RUN apt-get install libcairo2-dev libjpeg-dev libtiff-dev -y
+RUN apt-get install libcairo2-dev libjpeg-dev libtiff-dev r-base  r-base-dev -y
 ENV  R_VERSION 4.2.0
-RUN curl -O https://cran.rstudio.com/src/base/R-4/R-${R_VERSION}.tar.gz && tar -xzvf R-${R_VERSION}.tar.gz
-RUN cd R-${R_VERSION} && ./configure     --prefix=/opt/R/${R_VERSION}  \
-  --enable-memory-profiling \
-  --enable-R-shlib \
-  --with-blas \
-  --with-lapack
-RUN cd /R-${R_VERSION} && make && make install
-ENV PATH="/opt/R/${R_VERSION}/bin:${PATH}"
-RUN rm -rf /R-${R_VERSION}
-RUN rm -rf /R-${R_VERSION}.tar.gz
+#RUN curl -O https://cran.rstudio.com/src/base/R-4/R-${R_VERSION}.tar.gz && tar -xzvf R-${R_VERSION}.tar.gz
+#RUN cd R-${R_VERSION} && ./configure     --prefix=/opt/R/${R_VERSION}  \
+#  --enable-memory-profiling \
+#  --enable-R-shlib \
+#  --with-blas \
+#  --with-lapack
+#RUN cd /R-${R_VERSION} && make && make install
+##ENV PATH="/opt/R/${R_VERSION}/bin:${PATH}"
+#RUN rm -rf /R-${R_VERSION}
+#RUN rm -rf /R-${R_VERSION}.tar.gz
 
 RUN pip3 install awscli
 #RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
