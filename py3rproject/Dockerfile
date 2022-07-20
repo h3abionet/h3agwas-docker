@@ -55,6 +55,7 @@ RUN R -e "devtools::install_github('kassambara/ggpubr')"
 RUN R -e "install.packages(\"qqman\", repos='cran.r-project.org/')"
 
 RUN pip3 install numpy scipy pandas matplotlib openpyxl biopython Distance 
+RUN R -e "install.packages(c('openxlsx', 'kableExtra','plyr', 'knitr'), repos='https://cloud.r-project.org')"
 
 
 #crlmm => bioconductor
