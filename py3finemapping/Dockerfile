@@ -22,9 +22,8 @@ ENV PYTHONPATH "/usr/lib64/python3.6/site-packages/:/usr/local/lib64/python3.6/s
 RUN ln -s /usr/bin/plink1.9   /usr/bin/plink
 
 RUN wget https://github.com/gkichaev/PAINTOR_V3.0/archive/refs/tags/3.0.zip && unzip 3.0.zip && cd PAINTOR_V3.0-3.0 &&  bash install.sh
-RUN mv /PAINTOR_V3.0/PAINTOR /usr/bin/ && chmod +x /usr/bin/PAINTOR 
+RUN mv /PAINTOR_V3.0-3.0/PAINTOR /usr/bin/ && chmod +x /usr/bin/PAINTOR 
 
-https://github.com/gkichaev/PAINTOR_V3.0/archive/refs/tags/3.0.zip
 RUN wget http://www.christianbenner.com/finemap_v1.4_x86_64.tgz && tar -xzf finemap_v1.4_x86_64.tgz
 RUN mv /finemap_v1.4_x86_64/finemap_v1.4_x86_64 /usr/bin/finemap && chmod +x /usr/bin/finemap
 RUN git clone https://bitbucket.org/Wenan/caviarbf/ && cd caviarbf && make && mv caviarbf model_search  /usr/bin/
