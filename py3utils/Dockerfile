@@ -33,4 +33,7 @@ RUN pip install sympy
 RUN  git clone https://github.com/DReichLab/EIG/ && cd /EIG//src make LDLIBS="-llapacke" &&  make install LDLIBS="-llapacke" && mv ../bin/* /usr/bin/  &&  cd / && rm -rf EIG
 
 RUN  wget http://code.enkre.net/bgen/tarball/release/bgen.tgz && tar -xzf bgen.tgz && cd bgen.tgz/ && ./waf configure && ./waf && cp build/apps/bgenix /usr/bin/
+RUN apt-get install unzip libterm-readkey-perl -y
+RUN mkdir tmpbin && cd tmpbin && wget http://www.well.ox.ac.uk/~wrayner/tools/HRC-1000G-check-bim-v4.2.7.zip && unzip HRC-1000G-check-bim-v4.2.7.zip && cp HRC-1000G-check-bim.pl /usr/bin/ && chmod +x /usr/bin/HRC-1000G-check-bim.pl && cd ../ && rm -rf tmpbin
+
 
