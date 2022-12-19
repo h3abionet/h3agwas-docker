@@ -35,5 +35,28 @@ RUN  git clone https://github.com/DReichLab/EIG/ && cd /EIG//src make LDLIBS="-l
 RUN  wget http://code.enkre.net/bgen/tarball/release/bgen.tgz && tar -xzf bgen.tgz && cd bgen.tgz/ && ./waf configure && ./waf && cp build/apps/bgenix /usr/bin/
 RUN apt-get install unzip libterm-readkey-perl -y
 RUN mkdir tmpbin && cd tmpbin && wget http://www.well.ox.ac.uk/~wrayner/tools/HRC-1000G-check-bim-v4.2.7.zip && unzip HRC-1000G-check-bim-v4.2.7.zip && cp HRC-1000G-check-bim.pl /usr/bin/ && chmod +x /usr/bin/HRC-1000G-check-bim.pl && cd ../ && rm -rf tmpbin
+RUN apt-get install perl libarchive-zip-perl libdbi-perl -y
+#RUN git clone https://github.com/Ensembl/ensembl-vep.git && cd ensembl-vep && perl ./INSTALL.pl
+ENV TOOLS=/usr/bin/
+ENV TOOL_NAME=annovar
+ENV TOOL_VERSION=current
+ENV TARBALL_LOCATION=http://www.openbioinformatics.org/annovar/download/0wgxR2rIVP/
+ENV TARBALL=annovar.latest.tar.gz
+ENV TARBALL_FOLDER=$TOOL_NAME
+ENV DEST=$TOOLS/$TOOL_NAME/$TOOL_VERSION
+ENV PATH=$TOOLS/$TOOL_NAME/$TOOL_VERSION/bin:$PATH
+
+
+# INSTALL
+RUN wget $TARBALL_LOCATION/$TARBALL ; \
+    tar xf $TARBALL --wildcards *pl ; \
+    rm -rf $TARBALL ; \
+    cd $TARBALL_FOLDER ; \
+    mkdir -p $TOOLS/$TOOL_NAME/$TOOL_VERSION/bin ; \
+    cp *pl $TOOLS/$TOOL_NAME/$TOOL_VERSION/bin/ -R ; \
+    mkdir /databases ; \
+    ln -s /databases/ $TOOLS/$TOOL_NAME/$TOOL_VERSION/bin/humandb ; \
+    cd ../ ; \
+    rm -rf $TARBALL_FOLDER ;
 
 
