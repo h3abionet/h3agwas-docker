@@ -11,10 +11,11 @@ RUN apt update &&  apt install -y wget gcc g++ unzip make zlib1g-dev vim default
 RUN pip3 install awscli
 
 
-RUN wget https://raw.githubusercontent.com/h3abionet/h3agwas/master/utils/bin/gcta_1.93.2beta.zip && \
-    unzip gcta_1.93.2beta.zip && \
-    mv gcta_1.93.2beta/* /usr/local/bin/ && \
-    rm -rf gcta_1.93.2beta*
+# py3fastlmm
+RUN wget https://yanglab.westlake.edu.cn/software/gcta/bin/gcta-1.94.1-linux-kernel-3-x86_64.zip && \
+    unzip gcta-1.94.1-linux-kernel-3-x86_64.zip && \
+    mv gcta-1.94.1-linux-kernel-3-x86_64/* /usr/local/bin/ && \
+    rm -rf gcta-1.94.1-linux-kernel-3-x86_64*
 RUN pip3 install argparse numpy
 #ENV PATH="/usr/lib/plink/:${PATH}"
 RUN ln -s /usr/bin/plink1.9   /usr/bin/plink

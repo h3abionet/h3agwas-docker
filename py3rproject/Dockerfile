@@ -1,4 +1,4 @@
-FROM ubuntu:21.10
+FROM ubuntu:22.10
 
 ENV PYTHONNOUSERSITE 1
 
@@ -6,6 +6,7 @@ MAINTAINER JTB
 
 RUN apt-get update -qq
 # install two helper packages we need
+RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
 RUN apt install -y dirmngr apt-transport-https ca-certificates software-properties-common gnupg2  
 RUN apt-get update && apt-get install -y apt-transport-https ca-certificates python3-pip python3-dev wget build-essential fort77 xorg-dev liblzma-dev libblas-dev gfortran gcc-multilib  
 RUN apt-get install gobjc++ aptitude libreadline-dev libbz2-dev libpcre2-dev libcurl4 libcurl4-openssl-dev -y
@@ -15,7 +16,7 @@ RUN apt-get install -y libx11-dev xserver-xorg-dev libxt-dev
 
 RUN apt-get install xauth -y
 RUN apt-get install libcairo2-dev libjpeg-dev libtiff-dev r-base  r-base-dev -y
-ENV  R_VERSION 4.2.0
+#ENV  R_VERSION 4.2.0
 #RUN curl -O https://cran.rstudio.com/src/base/R-4/R-${R_VERSION}.tar.gz && tar -xzvf R-${R_VERSION}.tar.gz
 #RUN cd R-${R_VERSION} && ./configure     --prefix=/opt/R/${R_VERSION}  \
 #  --enable-memory-profiling \
@@ -28,7 +29,6 @@ ENV  R_VERSION 4.2.0
 #RUN rm -rf /R-${R_VERSION}.tar.gz
 
 RUN pip3 install awscli
-#RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
 
 RUN R -e "install.packages('car', dependencies=TRUE, repos='https://cloud.r-project.org')"
 RUN R -e "install.packages(c('optparse','data.table', 'ggplot2', 'ff', 'readxl', 'base64', 'parallel'),repos='https://cloud.r-project.org')" 
