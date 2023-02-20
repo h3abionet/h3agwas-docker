@@ -14,7 +14,7 @@ RUN pip3 install awscli
 # py3fastlmm
 RUN wget https://yanglab.westlake.edu.cn/software/gcta/bin/gcta-1.94.1-linux-kernel-3-x86_64.zip && \
     unzip gcta-1.94.1-linux-kernel-3-x86_64.zip && \
-    mv gcta-1.94.1-linux-kernel-3-x86_64/* /usr/local/bin/ && \
+    mv gcta-1.94.1-linux-kernel-3-x86_64/gcta* /usr/local/bin/gcta64 && \
     rm -rf gcta-1.94.1-linux-kernel-3-x86_64*
 RUN pip3 install argparse numpy
 #ENV PATH="/usr/lib/plink/:${PATH}"
