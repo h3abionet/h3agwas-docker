@@ -46,8 +46,8 @@ RUN R -e "install.packages('gridExtra', repos='http://R-Forge.R-project.org')"
 
 #RUN R -e "BiocManager::install('crlmm')"
 
-RUN apt-get install -y plink1.9
-RUN ln -s /usr/bin/plink1.9   /usr/bin/plink
+RUN apt-get install unzip && mkdir plink && cd plink && wget -c https://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20230116.zip && unzip plink_linux_x86_64_20230116.zip && cp plink /usr/bin/plink && cd ../ && rm -rf plink && chmod +x /usr/bin/plink
+
 RUN apt-get install -y libfontconfig1-dev
 RUN apt-get update && apt-get install libcurl4-gnutls-dev -y
 RUN apt-get install  libgl1-mesa-dev -y

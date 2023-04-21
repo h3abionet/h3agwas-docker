@@ -1,13 +1,12 @@
 FROM quay.io/cybozu/ubuntu:20.04
 ENV PYTHONNOUSERSITE 1  
-RUN apt-get -y update && apt-get -y install build-essential python3-dev python3 python3-pip gfortran wget libpng-dev libopenblas-dev plink1.9 
+RUN apt-get -y update && apt-get -y install build-essential python3-dev python3 python3-pip gfortran wget libpng-dev libopenblas-dev 
 
 RUN apt-get install -y curl  vcftools bcftools tabix samtools git vim libblas-dev
 RUN apt-get install libgsl-dev libblas-dev liblapack-dev liblapacke-dev libbz2-dev -y 
 RUN apt-get install liblzma-dev -y 
 RUN pip3 install numpy scipy pandas matplotlib openpyxl biopython Distance CrossMap awscli
 
-RUN ln -s /usr/bin/plink1.9   /usr/bin/plink
 
 RUN git clone https://github.com/gavinband/qctool && cd qctool
 RUN apt-get install -y zlib1g libboost-all-dev sqlite3
@@ -59,4 +58,6 @@ RUN wget $TARBALL_LOCATION/$TARBALL ; \
     cd ../ ; \
     rm -rf $TARBALL_FOLDER ;
 
+
+RUN apt-get install unzip && mkdir plink && cd plink && wget -c https://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20230116.zip && unzip plink_linux_x86_64_20230116.zip && cp plink /usr/bin/plink && cd ../ && rm -rf plink && chmod +x /usr/bin/plink
 

@@ -13,13 +13,13 @@ RUN  apt-get update && apt-get install -y software-properties-common
 RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
 RUN add-apt-repository ppa:deadsnakes/ppa
 
-RUN apt-get update && apt-get install -y plink1.9 wget gcc  wget  libpng-dev libopenblas-dev bash     libatlas-base-dev  unzip cmake libzstd-dev zlib1g zlib1g-dev  git make awscli build-essential  python3.6 python3.6-dev 
-RUN apt-get install -y apt-utils
+RUN apt-get update && apt-get install -y  wget gcc  wget  libpng-dev libopenblas-dev bash     libatlas-base-dev  unzip cmake libzstd-dev zlib1g zlib1g-dev  git make awscli build-essential  python3.6 python3.6-dev 
+RUN apt-get install -y apt-util
 RUN apt-get update && apt-get install -y python3-pip
 
 ENV PYTHONPATH "/usr/lib64/python3.6/site-packages/:/usr/local/lib64/python3.6/site-packages/"
 
-RUN ln -s /usr/bin/plink1.9   /usr/bin/plink
+RUN apt-get install unzip && mkdir plink && cd plink && wget -c https://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20230116.zip && unzip plink_linux_x86_64_20230116.zip && cp plink /usr/bin/plink && cd ../ && rm -rf plink && chmod +x /usr/bin/plink
 
 RUN wget https://github.com/gkichaev/PAINTOR_V3.0/archive/refs/tags/3.0.zip && unzip 3.0.zip && cd PAINTOR_V3.0-3.0 &&  bash install.sh
 RUN mv /PAINTOR_V3.0-3.0/PAINTOR /usr/bin/ && chmod +x /usr/bin/PAINTOR 

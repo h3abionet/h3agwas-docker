@@ -29,8 +29,8 @@ RUN apt-get update -y && \
 
 RUN R -e "install.packages(c('gridExtra', 'ggplot2'))"
 
-RUN apt-get install -y plink1.9
-RUN ln -s /usr/bin/plink1.9   /usr/bin/plink
+RUN apt-get install unzip && mkdir plink && cd plink && wget -c https://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20230116.zip && unzip plink_linux_x86_64_20230116.zip && cp plink /usr/bin/plink && cd ../ && rm -rf plink && chmod +x /usr/bin/plink
+
 RUN apt-get install -y libfontconfig1-dev
 RUN ln -s /usr/bin/python2.7 /usr/bin/python
 

@@ -6,7 +6,8 @@ ENV PYTHONNOUSERSITE 1
 RUN apt-get update 
 RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
 RUN apt-get install -y software-properties-common && apt-add-repository universe 
-RUN apt-get update &&  apt install -y wget build-essential unzip make zlib1g-dev vim default-jre python2.7  plink1.9 #zlib-dev curl 
+RUN apt-get update &&  apt install -y wget build-essential unzip make zlib1g-dev vim default-jre python2.7  p
+RUN apt-get install unzip && mkdir plink && cd plink && wget -c https://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20230116.zip && unzip plink_linux_x86_64_20230116.zip && cp plink /usr/bin/plink && cd ../ && rm -rf plink && chmod +x /usr/bin/plink
 
 ENV bolturl "https://storage.googleapis.com/broad-alkesgroup-public/BOLT-LMM/downloads/"
 ENV bolversion "BOLT-LMM_v2.3.6"
@@ -34,7 +35,6 @@ RUN pip install awscli
 RUN wget https://raw.githubusercontent.com/h3abionet/h3agwas/master/utils/bin/fastlmmc
 RUN mv fastlmmc /usr/local/bin/
 RUN chmod a+x /usr/local/bin/fastlmmc
-RUN ln -s /usr/bin/plink1.9   /usr/bin/plink
 
 #
 #

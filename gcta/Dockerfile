@@ -7,18 +7,19 @@ ENV PYTHONNOUSERSITE 1
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Moscow
 RUN apt update && apt-get install -y tzdata
-RUN apt update &&  apt install -y wget gcc g++ unzip make zlib1g-dev vim default-jre python3-pip python3-pandas  plink1.9 #zlib-dev
+RUN apt update &&  apt install -y wget gcc g++ unzip make zlib1g-dev vim default-jre python3-pip python3-pandas  
 RUN pip3 install awscli
 
 
+RUN apt-get install unzip && mkdir plink && cd plink && wget -c https://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20230116.zip && unzip plink_linux_x86_64_20230116.zip && cp plink /usr/bin/plink && cd ../ && rm -rf plink && chmod +x /usr/bin/plink
 # py3fastlmm
 RUN wget https://yanglab.westlake.edu.cn/software/gcta/bin/gcta-1.94.1-linux-kernel-3-x86_64.zip && \
     unzip gcta-1.94.1-linux-kernel-3-x86_64.zip && \
-    mv gcta-1.94.1-linux-kernel-3-x86_64/gcta* /usr/local/bin/gcta && \
+    mv gcta-1.94.1-linux-kernel-3-x86_64/gcta* /usr/local/bin/gcta64 && \
     rm -rf gcta-1.94.1-linux-kernel-3-x86_64*
 RUN pip3 install argparse numpy
 #ENV PATH="/usr/lib/plink/:${PATH}"
-RUN ln -s /usr/bin/plink1.9   /usr/bin/plink
+
 
 #RUN gcta64 -h
 #RUN plink -h
