@@ -21,6 +21,7 @@ RUN chmod a+x /usr/local/bin/fastlmmc
 RUN gemma -h
 RUN gemma-0.98.6 -h
 
+RUN pip install -U Jinja2
 
 
 #RUN WGET HTTP://S3.AMAZONAWS.COM/PLINK1-ASSETS/$PLINKSRC && UNZIP $PLINKSRC -D /USR/LOCAL/BIN/ && \
