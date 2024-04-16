@@ -59,5 +59,5 @@ RUN wget $TARBALL_LOCATION/$TARBALL ; \
     rm -rf $TARBALL_FOLDER ;
 
 
-RUN apt-get install unzip && mkdir plink && cd plink && wget -c https://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20230116.zip && unzip plink_linux_x86_64_20230116.zip && cp plink /usr/bin/plink && cd ../ && rm -rf plink && chmod +x /usr/bin/plink
-
+RUN apt-get install unzip -y && mkdir plink && cd plink && wget -c https://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20231211.zip && unzip plink_linux_x86_64_20231211.zip && cp plink /usr/bin/plink && cd ../ && rm -rf plink && chmod +x /usr/bin/plink
+RUN wget -c https://s3.amazonaws.com/plink2-assets/plink2_linux_avx2_20240318.zip && unzip plink2_linux_avx2_20240318.zip && cp plink2 /usr/bin/plink2
