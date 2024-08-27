@@ -1,6 +1,4 @@
 FROM ubuntu:22.10
-#FROM quay.io/cybozu/ubuntu:20.04
-
 
 ENV PYTHONNOUSERSITE 1
 
@@ -51,10 +49,10 @@ RUN apt-get install unzip && mkdir plink && cd plink && wget -c https://s3.amazo
 RUN apt-get install -y libfontconfig1-dev
 RUN apt-get update && apt-get install libcurl4-gnutls-dev -y
 RUN apt-get install  libgl1-mesa-dev -y
+RUN R -e "install.packages(\"devtools\", repos='cran.r-project.org/')"
 RUN apt-get install  cmake -y
 RUN R -e "devtools::install_github('kassambara/ggpubr')"
 RUN R -e "install.packages(\"qqman\", repos='cran.r-project.org/')"
-RUN R -e "install.packages(\"devtools\", repos='cran.r-project.org/')"
 
 RUN pip3 install numpy scipy pandas matplotlib openpyxl biopython Distance 
 RUN R -e "install.packages(c('openxlsx', 'kableExtra','plyr', 'knitr'), repos='https://cloud.r-project.org')"
