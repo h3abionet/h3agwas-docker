@@ -2,7 +2,7 @@ FROM quay.io/cybozu/ubuntu:20.04
 ENV PYTHONNOUSERSITE 1  
 RUN apt-get -y update && apt-get -y install build-essential python3-dev python3 python3-pip gfortran wget libpng-dev libopenblas-dev 
 
-RUN apt-get install -y curl  vcftools bcftools tabix samtools git vim libblas-dev bgzip
+RUN apt-get install -y curl  vcftools bcftools tabix samtools git vim libblas-dev 
 RUN apt-get install libgsl-dev libblas-dev liblapack-dev liblapacke-dev libbz2-dev -y 
 RUN apt-get install liblzma-dev -y 
 RUN pip3 install numpy scipy pandas matplotlib openpyxl biopython Distance CrossMap awscli
@@ -36,28 +36,28 @@ RUN apt-get install unzip libterm-readkey-perl -y
 RUN mkdir tmpbin && cd tmpbin && wget http://www.well.ox.ac.uk/~wrayner/tools/HRC-1000G-check-bim-v4.2.7.zip && unzip HRC-1000G-check-bim-v4.2.7.zip && cp HRC-1000G-check-bim.pl /usr/bin/ && chmod +x /usr/bin/HRC-1000G-check-bim.pl && cd ../ && rm -rf tmpbin
 RUN apt-get install perl libarchive-zip-perl libdbi-perl -y
 #RUN git clone https://github.com/Ensembl/ensembl-vep.git && cd ensembl-vep && perl ./INSTALL.pl
-ENV TOOLS=/usr/bin/
-ENV TOOL_NAME=annovar
-ENV TOOL_VERSION=current
-ENV TARBALL_LOCATION=http://www.openbioinformatics.org/annovar/download/0wgxR2rIVP/
-ENV TARBALL=annovar.latest.tar.gz
-ENV TARBALL_FOLDER=$TOOL_NAME
-ENV DEST=$TOOLS/$TOOL_NAME/$TOOL_VERSION
-ENV PATH=$TOOLS/$TOOL_NAME/$TOOL_VERSION/bin:$PATH
+#ENV TOOLS=/usr/bin/
+#ENV TOOL_NAME=annovar
+#ENV TOOL_VERSION=current
+#ENV TARBALL_LOCATION=http://www.openbioinformatics.org/annovar/download/0wgxR2rIVP/
+#ENV TARBALL=annovar.latest.tar.gz
+#ENV TARBALL_FOLDER=$TOOL_NAME
+#ENV DEST=$TOOLS/$TOOL_NAME/$TOOL_VERSION
+#ENV PATH=$TOOLS/$TOOL_NAME/$TOOL_VERSION/bin:$PATH
 
 
 # INSTALL
-RUN wget $TARBALL_LOCATION/$TARBALL ; \
-    tar xf $TARBALL --wildcards *pl ; \
-    rm -rf $TARBALL ; \
-    cd $TARBALL_FOLDER ; \
-    mkdir -p $TOOLS/$TOOL_NAME/$TOOL_VERSION/bin ; \
-    cp *pl $TOOLS/$TOOL_NAME/$TOOL_VERSION/bin/ -R ; \
-    mkdir /databases ; \
-    ln -s /databases/ $TOOLS/$TOOL_NAME/$TOOL_VERSION/bin/humandb ; \
-    cd ../ ; \
-    rm -rf $TARBALL_FOLDER ;
+#RUN wget $TARBALL_LOCATION/$TARBALL ; \
+#    tar xf $TARBALL --wildcards *pl ; \
+#    rm -rf $TARBALL ; \
+#    cd $TARBALL_FOLDER ; \
+#    mkdir -p $TOOLS/$TOOL_NAME/$TOOL_VERSION/bin ; \
+#    cp *pl $TOOLS/$TOOL_NAME/$TOOL_VERSION/bin/ -R ; \
+#    mkdir /databases ; \
+#    ln -s /databases/ $TOOLS/$TOOL_NAME/$TOOL_VERSION/bin/humandb ; \
+#    cd ../ ; \
+#    rm -rf $TARBALL_FOLDER ;
 
 
 RUN apt-get install unzip -y && mkdir plink && cd plink && wget -c https://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20231211.zip && unzip plink_linux_x86_64_20231211.zip && cp plink /usr/bin/plink && cd ../ && rm -rf plink && chmod +x /usr/bin/plink
-RUN wget -c https://s3.amazonaws.com/plink2-assets/plink2_linux_avx2_20240318.zip && unzip plink2_linux_avx2_20240318.zip && cp plink2 /usr/bin/plink2
+RUN wget -c https://s3.amazonaws.com/plink2-assets/alpha6/plink2_linux_avx2_20250129.zip  && unzip plink2_linux_avx2_20250129.zip && cp plink2 /usr/bin/plink2
